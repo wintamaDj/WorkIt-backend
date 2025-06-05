@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -75,8 +76,12 @@ WSGI_APPLICATION = 'workit_prj.wsgi.application'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
+    # 'default': {
+
+    # },
+
     'default': {
-        'ENGINE': 'django.db.backend.postgresql',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'workit-db',
         'USER': os.getenv('DB_USER'),
         'PASSWORD': os.getenv('DB_PASS'),
@@ -85,6 +90,8 @@ DATABASES = {
     }
 }
 
+# Extend Django's User model
+AUTH_USER_MODEL = "apps.home.user.User"
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
