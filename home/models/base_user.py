@@ -17,9 +17,9 @@ from django.contrib.auth.models import AbstractUser
 ### USER MODELS ###
 class User(AbstractUser):
     class Role(models.TextChoices):
-        ADMIN = 'ADMIN', 'admin'
-        SEEKER = 'SEEKER', 'seeker'
-        COMPANY = 'COMPANY', 'company'
+        ADMIN = 'ADMIN', 'Admin'
+        SEEKER = 'SEEKER', 'Seeker'
+        COMPANY = 'COMPANY', 'Company'
 
 # Sets default for registration
 base_role = User.Role.ADMIN
