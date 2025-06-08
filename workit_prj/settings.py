@@ -85,7 +85,7 @@ DATABASES = {
         'NAME': 'workit-db',
         'USER': os.getenv('DB_USER'),
         'PASSWORD': os.getenv('DB_PASS'),
-        'HOST': 'localhost',
+        'HOST': '127.0.0.1',
         'PORT': '5432'
     }
 }
@@ -132,4 +132,4 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Extend Django's User model
-# AUTH_USER_MODEL = 'home.User'
+AUTH_USER_MODEL = 'home.User'

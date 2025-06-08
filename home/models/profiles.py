@@ -9,7 +9,8 @@ class seeker_profile(models.Model):
     pic = models.ImageField(blank=True)
     resume = models.FileField(blank=True)
 
-@receiver(post_save, sender=Seeker)
+# Signaling to create profile
+@receiver(post_save, sender=base_user.Seeker)
 def create_seeker_profile(sender, instance, created, **kwargs):
     if created and instance.role == 'SEEKER':
         seeker_profile.objects.create(user=instance)
@@ -22,10 +23,11 @@ class company_profile(models.Model):
     address = models.CharField(max_length=255)
     contact = models.CharField(max_length=255)
 
-@receiver(post_save, sender='COMPANY')
-def create_seeker_profile(sender, instance, created, **kwargs):
+# Signaling to create profile
+@receiver(post_save, sender=base_user.Company)
+def create_company_profile(sender, instance, created, **kwargs):
     if created and instance.role == 'COMPANY':
-        seeker_profile.objects.create(user=instance)
+        company_profile.objects.create(user=instance)
 
 # class education_card(models.Model):
 #     # 0..*, many-to-one

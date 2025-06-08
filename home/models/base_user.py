@@ -21,14 +21,27 @@ class User(AbstractUser):
         SEEKER = 'SEEKER', 'Seeker'
         COMPANY = 'COMPANY', 'Company'
 
-# Sets default for registration
-base_role = User.Role.ADMIN
+    # Sets default for registration
+    base_role = Role.ADMIN
+    
+    # Adds new attribute 'role'
+    role = models.CharField(max_length=50, choices=Role.choices)
 
-# Adds new attribute 'role'
-role = models.CharField(max_length=50, choices=User.Role.choices)
+    # Avoiding custom registration
+    def save(self, *arg, **kwargs):
+        if not self.pk:
+            self.role = self.base_role
+            return super().save(*arg, **kwargs)
 
-# Avoiding custom registration
-def save(self, *arg, **kwargs):
-    if not self.pk:
-        self.role = self.base_role
-        return super().save(*arg, **kwargs)
+# Proxy classes    
+class Seeker(User):
+    base_role = User.Role.SEEKER
+
+    class Meta:
+        proxy = True
+
+class Company(User):
+    base_role = User.Role.COMPANY
+
+    class Meta:
+        proxy = True
