@@ -12,8 +12,8 @@
 #         fields = ['url', 'name']
 
 from rest_framework import serializers
-from ..models.base_user import *
-from ..models.profiles import *
+from root.models import *
+from seeker.models import *
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -34,13 +34,3 @@ class SeekerProfileSerializer(serializers.ModelSerializer):
             'resume',
         ]
 
-class ComapnyProfileSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = company_profile
-        fields = [
-            'id',
-            'pic',
-            'industry',
-            'address',
-            'contact',
-        ]

@@ -1,5 +1,5 @@
 """
-URL configuration for workit_prj project.
+URL configuration for root project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/5.2/topics/http/urls/
@@ -19,7 +19,8 @@ from django.urls import include, path
 from .views import *
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('api/', include('home.urls')),
     path('', index),
+    path('admin/', admin.site.urls),
+    path('seeker/', include('seeker.urls')),
+    path('biz/', include('biz.urls')),
 ]

@@ -1,7 +1,8 @@
 # Only affects default Django admin site
 from django.contrib import admin
-from .models.base_user import User, Company, Seeker
-from .models.profiles import seeker_profile, company_profile
+from .models import User, Company, Seeker
+from seeker.models import seeker_profile
+from biz.models import company_profile
 
 # Register your models here.
 admin.site.register(User)
