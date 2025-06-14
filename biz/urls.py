@@ -3,7 +3,8 @@ from django.urls import path
 from .views import *
 
 urlpatterns = [
-    path('company/main/', index, name='placeholder'),
-    path('company/register/', CreateUser_Company.as_view(), name='Register Company'),
-    path('company/profile/<int:pk>/', Update_CompanyProfile.as_view(), name='Company Profile'),
+    path('', index, name='index'),
+    path('main/', index, name='placeholder'),
+    path('register/', CreateUser_Company.as_view(), name='Register Company'),
+    path('profile/<int:pk>/', Update_CompanyProfile.as_view(), name='Company Profile'),
 ]

@@ -1,7 +1,7 @@
 from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-from root.models import User, Company
+from authsite.models import User, Company
 
 # TO-DO:
 # setup default image

@@ -3,12 +3,12 @@ from django.http import HttpResponse
 
 # Create your views here.
 def index(request):
-    return HttpResponse("[API TEST] Oops. Something went wrong, and you shouldn't be seeing this page! Please contact support or an admin")
+    return HttpResponse("[seeker api] Oops. Something went wrong, and you shouldn't be seeing this page! Please contact support or an admin")
 
 # API views
 from rest_framework import generics
-from root.models import Seeker
-from .serializers.serializers import *
+from authsite.models import Seeker
+from .serializers import *
 # from rest_framework.permissions import IsAdminUser
 
 class CreateUser_Seeker(generics.ListCreateAPIView):

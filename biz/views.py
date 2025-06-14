@@ -3,12 +3,13 @@ from django.http import HttpResponse
 
 # Placeholder view
 def index(request):
-    return HttpResponse("[BUSSINESS API] Oops. Something went wrong, and you shouldn't be seeing this page! Please contact support or an admin")
+    return HttpResponse("[biz api] Oops. Something went wrong, and you shouldn't be seeing this page! Please contact support or an admin")
 
 # API views
 from rest_framework import generics
-from root.models import Company
-from .serializers.serializers import *
+from authsite.models import User, Company
+from .serializers import *
+from .models import *
 # from rest_framework.permissions import IsAdminUser
 
 # User and profile

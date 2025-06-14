@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'biz',
     'seeker',
-    'root',
+    'authsite',
 ]
 
 MIDDLEWARE = [
@@ -135,7 +135,7 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Extend Django's User model
-AUTH_USER_MODEL = 'root.User'
+AUTH_USER_MODEL = 'authsite.User'
 
 # DRF project-wide permissions
 REST_FRAMEWORK = {

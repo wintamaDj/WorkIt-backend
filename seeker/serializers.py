@@ -12,8 +12,8 @@
 #         fields = ['url', 'name']
 
 from rest_framework import serializers
-from root.models import *
-from seeker.models import *
+from authsite.models import *
+from .models import *
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
