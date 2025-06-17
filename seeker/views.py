@@ -9,7 +9,7 @@ def index(request):
 from rest_framework import generics
 from authsite.models import Seeker
 from .serializers import *
-# from rest_framework.permissions import IsAdminUser
+from rest_framework.permissions import *
 
 # add per view for perms:
 # permission_classes = [*insert perm model*]
@@ -20,21 +20,22 @@ from .serializers import *
 class Create_User_Seeker(generics.ListCreateAPIView):
     queryset = User.objects.filter(role='SEEKER')
     serializer_class = UserSerializer
-    # permission_classes = [DjangoModelPermissions]
+    permission_classes = [AllowAny]
 
     def create(self, validated_data):
         return Seeker.objects.create(**validated_data)
 
 # Profile
-class Edit_SeekerProfile(generics.RetrieveUpdateAPIView):
+class ViewEdit_SeekerProfile(generics.RetrieveUpdateAPIView):
+# class Edit_SeekerProfile(generics.RetrieveUpdateAPIView):
     queryset = seeker_profile.objects.all()
     serializer_class = SeekerProfileSerializer
     # permission_classes = [DjangoModelPermissions]
 
-class View_SeekerProfile(generics.ListAPIView):
-    queryset = seeker_profile.objects.all()
-    serializer_class = SeekerProfileSerializer
-    # permission_classes = [DjangoModelPermissions]
+# class View_SeekerProfile(generics.ListAPIView):
+#     queryset = seeker_profile.objects.all()
+#     serializer_class = SeekerProfileSerializer
+#     # permission_classes = [IsAuthenticated]
 
 # education_details
 class Create_education_details(generics.CreateAPIView):

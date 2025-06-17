@@ -84,7 +84,7 @@ DATABASES = {
     # },
 
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.db.backends.postgresql', # SQLITE is also highly recommended
         'NAME': 'workit-db',
         'USER': os.getenv('DB_USER'),
         'PASSWORD': os.getenv('DB_PASS'),
@@ -140,8 +140,8 @@ AUTH_USER_MODEL = 'authsite.User'
 # DRF project-wide permissions
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.AllowAny',
-        # 'rest_framework.permissions.IsAuthenticated',
+        # 'rest_framework.permissions.AllowAny', # use for debug only
+        'rest_framework.permissions.DjangoModelPermissions',
     ]
 }
 

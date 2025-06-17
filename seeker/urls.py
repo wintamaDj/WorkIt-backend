@@ -3,8 +3,9 @@ from .views import *
 from biz.views import List_Company
 
 profile = [
-    path('profile/<int:pk>/edit/', Edit_SeekerProfile.as_view(), name='Modify Seeker Profile'), # DRF requires key in url
-    path('profile/<int:pk>/', View_SeekerProfile.as_view(), name='View Seeker Profile'),
+    # path('profile/<int:pk>/edit/', Edit_SeekerProfile.as_view(), name='Modify Seeker Profile'), # DRF requires key in url
+    # path('profile/<int:pk>/', View_SeekerProfile.as_view(), name='View Seeker Profile'),
+    path('profile/<int:pk>/', ViewEdit_SeekerProfile.as_view(), name='View and Modify Seeker Profile'),
 ]
 
 edu = [
@@ -21,9 +22,9 @@ career = [
 
 # main router
 urlpatterns = [
-    path('', index, name='index'),
+    # path('', index, name='index'),
     # path('main/', index, name='placeholder'),
-    path('listcompany/', List_Company.as_view(), name='Lists Companies'),   
+    path('', List_Company.as_view(), name='Lists Companies'),   
     path('register/', Create_User_Seeker.as_view(), name='Register Seeker'),
     path('profile/', include(profile)),
     path('education/', include(edu)),

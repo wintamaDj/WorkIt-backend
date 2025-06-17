@@ -7,6 +7,12 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         fields = '__all__'
 
+    # def validate_this(self, value):
+    #     if value <=0:
+    #         raise serializers.ValidationError(
+    #             "price must be greathar than 0"
+    #         )
+
 class RegisterCompanySerializer(serializers.ModelSerializer):
     class Meta:
         model = User

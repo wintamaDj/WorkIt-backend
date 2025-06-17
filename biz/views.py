@@ -16,7 +16,7 @@ from .models import *
 class Create_User_Company(generics.ListCreateAPIView):
     queryset = User.objects.filter(role='COMPANY')
     serializer_class = UserSerializer
-    # permission_classes = [DjangoModelPermissions]
+    permission_classes = [AllowAny]
 
     def create(self, validated_data):
         return Company.objects.create_user(**validated_data)
@@ -24,12 +24,12 @@ class Create_User_Company(generics.ListCreateAPIView):
 class Update_CompanyProfile(generics.RetrieveUpdateAPIView):
     queryset = company_profile.objects.all()
     serializer_class = ComapnyProfileSerializer
-    # permission_classes = [IsAuthenticated]
+    # permission_classes = [DjangoModelPermissions]
 
 class View_CompanyProfile(generics.RetrieveAPIView):
     queryset = company_profile.objects.all()
     serializer_class = ComapnyProfileSerializer
-    # permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated]
 
 class List_Company(generics.ListAPIView):
     queryset = User.objects.filter(role='COMPANY')

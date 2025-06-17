@@ -34,3 +34,15 @@ class SeekerProfileSerializer(serializers.ModelSerializer):
             'resume',
         ]
 
+# serializer method averages user review
+
+# how to implement ser. methods:
+# class UserSerializer(serializers.ModelSerializer):
+#     days_since_joined = serializers.SerializerMethodField()
+
+#     class Meta:
+#         model = User
+#         fields = '__all__'
+
+#     def get_days_since_joined(self, obj):
+#         return (now() - obj.date_joined).days

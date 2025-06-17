@@ -1,3 +1,4 @@
+from statistics import mean
 from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
@@ -41,8 +42,19 @@ class user_reviews:
     company_jobs_rel = models.ForeignKey(company_jobs, on_delete=models.CASCADE)
     job_application = models.ForeignKey(job_applications, on_delete=models.CASCADE)
     description = models.CharField(max_length=255)
-    overall_rating = models.PositiveSmallIntegerField(max_length=5, default=0)
+    # overall_rating = models.PositiveSmallIntegerField(max_length=5, default=0)
     benefits_rating = models.PositiveSmallIntegerField(max_length=5, default=0)
-    balance_rating = models.PositiveSmallIntegerField(max_length=5, default=0)
+    life_balance_rating = models.PositiveSmallIntegerField(max_length=5, default=0)
     environment_rating = models.PositiveSmallIntegerField(max_length=5, default=0)
     opportunity_rating = models.PositiveSmallIntegerField(max_length=5, default=0)
+
+    @property
+    def avg_rating(self):
+        benefit = self.benefits_rating
+        life_bal = self.life_balance_rating
+        environ = self.environment_rating
+        oppty = self.opportunity_rating
+
+        average = mean(benefit, life_bal, environ, oppty)
+        
+        return average
