@@ -12,4 +12,4 @@ python -c 'from django.core.management.utils import get_random_secret_key; print
 
 ## Documentation
 ### Models/Class diagram
-![class diagram of WorkIt-backend](docs/workit_classdiagram.png)
+![class diagram of WorkIt-backend](Docs/workit_classdiagram.png)
